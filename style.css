@@ -38,6 +38,31 @@ body {
   line-height: 1.6;
 }
 
+/* Both components are mobile nav patterns (bottom tab bar, left-edge
+   drawer) — on a wide desktop viewport the bottom bar just sits at the
+   bottom of a huge page and the drawer covers a sliver of the screen,
+   neither of which reads as intended. Nudge desktop visitors toward
+   mobile/device mode instead of letting them silently see something that
+   looks broken. Hidden once the viewport is already narrow (same 640px
+   breakpoint used throughout the CSS). */
+.mobile-mode-notice {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  padding: 10px 16px;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .mobile-mode-notice {
+    display: none;
+  }
+}
+
 /* ---------- Hamburger trigger + drawer ---------- */
 
 .hamburger-trigger {
