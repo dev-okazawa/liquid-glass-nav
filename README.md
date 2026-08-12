@@ -17,6 +17,13 @@ No component library, no build step required for the vanilla version — plain
 CSS + ~120 lines of JS. A React version with the same behavior is included
 too.
 
+## Used in production
+
+- **[DiagAI](https://diagai.jp)** — an AI car-diagnosis app. Describe your
+  car's symptoms and get likely causes, an urgency read, and talking points
+  to bring to a mechanic. This nav is extracted directly from its bottom tab
+  bar and hamburger menu (see the screenshots above).
+
 ## Why this exists
 
 True iOS Liquid Glass uses native, real-time light refraction (Metal /
