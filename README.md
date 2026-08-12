@@ -22,7 +22,9 @@ too.
 - **[DiagAI](https://diagai.jp)** — an AI car-diagnosis app. Describe your
   car's symptoms and get likely causes, an urgency read, and talking points
   to bring to a mechanic. This nav is extracted directly from its bottom tab
-  bar and hamburger menu (see the screenshots above).
+  bar and hamburger menu (see the screenshots above). It's a mobile-first
+  app — open it on your phone, or switch to mobile/device mode in desktop
+  Chrome/Safari DevTools, to see the nav in context.
 
 ## Why this exists
 
