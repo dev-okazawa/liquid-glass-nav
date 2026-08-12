@@ -4,7 +4,14 @@ A bottom tab bar and hamburger drawer with an Apple "Liquid Glass"-style
 translucent, refractive look — a sliding highlight that morphs between tabs,
 and a press-triggered "bloom" where the glass visibly reacts to contact.
 
-![Demo screenshot](demo.jpg)
+Screenshots below are from [DiagAI](https://diagai.jp) (an AI car-diagnosis
+app), the real production app this was extracted from — the bottom nav's
+sliding indicator, and the hamburger drawer with the same glass treatment:
+
+<p>
+  <img src="demo-bottom-nav.png" alt="Bottom nav with the sliding liquid-glass indicator" width="360" />
+  <img src="demo-menu.png" alt="Hamburger drawer with the matching glass treatment" width="360" />
+</p>
 
 No component library, no build step required for the vanilla version — plain
 CSS + ~120 lines of JS. A React version with the same behavior is included
