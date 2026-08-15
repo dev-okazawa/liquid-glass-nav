@@ -18,6 +18,25 @@ treatment:
 No component library, no build step required for the vanilla version — plain
 CSS + JS. React components with the same behavior are included too.
 
+## Install
+
+This package is published to GitHub Packages:
+
+```sh
+npm install @dev-okazawa/liquid-glass-nav --registry=https://npm.pkg.github.com
+```
+
+Import the React components and shared CSS:
+
+```tsx
+import {
+  LiquidGlassBottomNav,
+  LiquidGlassHamburgerMenu,
+  LiquidGlassTopNav,
+} from '@dev-okazawa/liquid-glass-nav'
+import '@dev-okazawa/liquid-glass-nav/style.css'
+```
+
 ## Used in production
 
 - **[DiagAI](https://diagai.jp)** — an AI car-diagnosis app. Describe your
