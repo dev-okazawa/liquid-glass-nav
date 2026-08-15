@@ -11,8 +11,8 @@ nav's sliding indicator, and the hamburger drawer with the same glass
 treatment:
 
 <p>
-  <img src="demo-bottom-nav.png" alt="Bottom nav with the sliding liquid-glass indicator" width="360" />
-  <img src="demo-menu.png" alt="Hamburger drawer with the matching glass treatment" width="360" />
+  <img src="demo-diagai-home.png" alt="DiagAI home screen with liquid-glass top and bottom navigation" width="360" />
+  <img src="demo-diagai-menu.png" alt="DiagAI hamburger drawer with the matching liquid-glass treatment" width="360" />
 </p>
 
 No component library, no build step required for the vanilla version — plain
