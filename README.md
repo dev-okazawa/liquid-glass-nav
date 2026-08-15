@@ -1,12 +1,14 @@
 # Liquid Glass Nav
 
-A bottom tab bar and hamburger drawer with an Apple "Liquid Glass"-style
-translucent, refractive look — a sliding highlight that morphs between tabs,
-and a press-triggered "bloom" where the glass visibly reacts to contact.
+A mobile top bar, bottom tab bar, and hamburger drawer with an Apple
+"Liquid Glass"-style translucent, refractive look — layered glass surfaces,
+a sliding bottom-tab highlight, and a press-triggered "bloom" where the glass
+visibly reacts to contact.
 
 Screenshots below are from [DiagAI](https://diagai.jp) (an AI car-diagnosis
-app), the real production app this was extracted from — the bottom nav's
-sliding indicator, and the hamburger drawer with the same glass treatment:
+app), the real production app this was extracted from — the top nav, bottom
+nav's sliding indicator, and the hamburger drawer with the same glass
+treatment:
 
 <p>
   <img src="demo-bottom-nav.png" alt="Bottom nav with the sliding liquid-glass indicator" width="360" />
@@ -14,17 +16,16 @@ sliding indicator, and the hamburger drawer with the same glass treatment:
 </p>
 
 No component library, no build step required for the vanilla version — plain
-CSS + ~120 lines of JS. A React version with the same behavior is included
-too.
+CSS + JS. React components with the same behavior are included too.
 
 ## Used in production
 
 - **[DiagAI](https://diagai.jp)** — an AI car-diagnosis app. Describe your
   car's symptoms and get likely causes, an urgency read, and talking points
-  to bring to a mechanic. This nav is extracted directly from its bottom tab
-  bar and hamburger menu (see the screenshots above). It's a mobile-first
-  app — open it on your phone, or switch to mobile/device mode in desktop
-  Chrome/Safari DevTools, to see the nav in context.
+  to bring to a mechanic. This nav is extracted directly from its top bar,
+  bottom tab bar, and hamburger menu (see the screenshots above). It's a
+  mobile-first app — open it on your phone, or switch to mobile/device mode
+  in desktop Chrome/Safari DevTools, to see the nav in context.
 
 ## Why this exists
 
@@ -44,8 +45,8 @@ python3 -m http.server 8000
 # then open http://localhost:8000/vanilla/
 ```
 
-Best viewed on an actual phone (or a narrow browser viewport) — this is a
-bottom tab bar and a left-edge drawer, both mobile navigation patterns.
+Best viewed on an actual phone (or a narrow browser viewport) — these are
+mobile navigation patterns.
 
 ## What's in here
 
@@ -53,6 +54,7 @@ bottom tab bar and a left-edge drawer, both mobile navigation patterns.
 style.css                       — shared by both versions below
 vanilla/index.html + script.js  — framework-free version
 react/                          — React version (same CSS, same behavior)
+  LiquidGlassTopNav.tsx
   LiquidGlassBottomNav.tsx
   LiquidGlassHamburgerMenu.tsx
 ```
@@ -62,6 +64,31 @@ react/                          — React version (same CSS, same behavior)
 ```tsx
 import LiquidGlassBottomNav from './react/LiquidGlassBottomNav'
 import LiquidGlassHamburgerMenu from './react/LiquidGlassHamburgerMenu'
+import LiquidGlassTopNav from './react/LiquidGlassTopNav'
+
+<LiquidGlassTopNav
+  brand={
+    <a href="/" className="topnav-brand">
+      <BrandMarkIcon className="topnav-brand-mark" />
+      DiagAI
+    </a>
+  }
+  left={
+    <button type="button" className="hamburger-trigger" aria-label="Open menu">
+      <MenuIcon />
+    </button>
+  }
+  right={
+    <>
+      <a href="/notifications" className="topnav-icon-link" aria-label="Notifications">
+        <BellIcon />
+      </a>
+      <a href="/settings" className="topnav-icon-link" aria-label="Settings">
+        <SettingsIcon />
+      </a>
+    </>
+  }
+/>
 
 <LiquidGlassBottomNav
   tabs={[
@@ -90,8 +117,8 @@ assume one.
 
 ## How the glass effect is built
 
-Each surface (the tab bar pill, the drawer, the sliding indicator) is three
-stacked layers rather than one background:
+Each surface (the top bar, tab bar pill, drawer, and sliding indicator) is
+three stacked layers rather than one background:
 
 1. **effect** — the blurred backdrop (`backdrop-filter: blur() saturate()`)
 2. **tint** — the material's own faint gradient, so it doesn't read as plain

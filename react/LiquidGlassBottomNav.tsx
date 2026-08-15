@@ -118,7 +118,9 @@ export default function LiquidGlassBottomNav({ tabs, fab, fabIndex, activeKey, o
           style={{
             transform: `translateX(${indicator.left}px)`,
             width: indicator.width,
-            opacity: indicator.visible ? 0.6 : 0,
+            opacity: indicator.visible ? 0.4 : 0,
+            background: 'var(--color-faint)',
+            borderRadius: 99,
           }}
         >
           <div className={activeIndicatorPressed ? 'bottom-tab-indicator-glass pressed' : 'bottom-tab-indicator-glass'} />

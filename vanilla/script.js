@@ -9,12 +9,12 @@
 const DRAWER_CLOSE_MS = 350
 
 const DRAWER_LINKS = [
-  { href: '#', label: 'Home' },
-  { href: '#', label: 'About' },
-  { href: '#', label: 'Settings' },
-  { href: '#', label: 'Help' },
-  { href: '#', label: 'Privacy' },
+  { href: '#', label: 'Pricing' },
+  { href: '#', label: 'Company' },
+  { href: '#', label: 'Disclaimer' },
   { href: '#', label: 'Terms' },
+  { href: '#', label: 'Privacy Policy' },
+  { href: '#', label: 'Legal Notice' },
 ]
 
 const drawerRoot = document.getElementById('drawer-root')
@@ -125,7 +125,9 @@ function measureIndicator() {
   const elRect = el.getBoundingClientRect()
   indicator.style.transform = `translateX(${elRect.left - containerRect.left}px)`
   indicator.style.width = `${elRect.width}px`
-  indicator.style.opacity = '0.6'
+  indicator.style.opacity = '0.4'
+  indicator.style.background = 'var(--color-faint)'
+  indicator.style.borderRadius = '99px'
 }
 
 measureIndicator()
