@@ -177,6 +177,13 @@ body {
   inset: 0;
   z-index: 40;
   background: rgba(0, 0, 0, 0.46);
+  /* Animates background-color, not opacity — animating the *opacity* of an
+     element that's an ancestor of a backdrop-filter element makes Chrome
+     treat it as a new "backdrop root": the descendant's backdrop-filter can
+     then only sample within this darkening group, not the real page behind
+     it, so the drawer read as dim/washed-out for the whole transition
+     regardless of the drawer's own background. Animating background-color
+     directly avoids that grouping while looking identical. */
   animation: hamburger-drawer-backdrop-in 0.2s ease-out;
 }
 
@@ -226,9 +233,6 @@ body {
   inset: 0;
   z-index: 1;
   border-radius: inherit;
-  background:
-    radial-gradient(90% 130% at 14% 18%, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0) 64%),
-    linear-gradient(100deg, rgba(0, 0, 0, 0.18), rgba(0, 0, 0, 0.28));
 }
 
 .hamburger-drawer-glass-shine {
@@ -263,13 +267,13 @@ body {
 }
 
 @keyframes hamburger-drawer-backdrop-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from { background-color: rgba(0, 0, 0, 0); }
+  to { background-color: rgba(0, 0, 0, 0.46); }
 }
 
 @keyframes hamburger-drawer-backdrop-out {
-  from { opacity: 1; }
-  to { opacity: 0; }
+  from { background-color: rgba(0, 0, 0, 0.46); }
+  to { background-color: rgba(0, 0, 0, 0); }
 }
 
 .hamburger-drawer-close {
@@ -286,7 +290,7 @@ body {
   background: rgba(255, 255, 255, 0.035);
   -webkit-backdrop-filter: blur(1.5px) saturate(140%);
   backdrop-filter: blur(1.5px) saturate(140%);
-  color: rgba(255, 255, 255, 0.72);
+  color: #fff;
   cursor: pointer;
   box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.16), inset 0 -1px 1px rgba(255, 255, 255, 0.04);
 }
