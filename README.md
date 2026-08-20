@@ -141,7 +141,8 @@ three stacked layers rather than one background:
 
 1. **effect** — the blurred backdrop (`backdrop-filter: blur() saturate()`)
 2. **tint** — the material's own faint gradient, so it doesn't read as plain
-   blurred glass
+   blurred glass (the drawer's tint layer is currently empty — a lighter
+   look than the bar/top nav — but stays in the DOM for consistency)
 3. **shine** — inset box-shadows that catch light at the edges
 
 The sliding indicator additionally has its own `::before`/`::after`
@@ -170,6 +171,16 @@ static CSS value.
   menu** ("Open / Add to Reading List / Copy Link / Share…") unless you set
   `-webkit-tap-highlight-color: transparent` is not enough by itself —
   add `-webkit-touch-callout: none` to the tab links too.
+- **Animating the `opacity` of an element that's an ancestor of a
+  `backdrop-filter` element makes Chrome treat it as a new "backdrop
+  root."** The descendant's `backdrop-filter` can then only sample within
+  that darkening group, not the real page behind it — `.hamburger-drawer`
+  (a `backdrop-filter` element) sits inside `.hamburger-drawer-backdrop`,
+  and animating the backdrop's `opacity` on open/close made the drawer read
+  as dim/washed-out for the whole transition, regardless of the drawer's
+  own background. Animate `background-color` instead (see the
+  `hamburger-drawer-backdrop-in`/`-out` keyframes in `style.css`) — it looks
+  identical without creating the grouping.
 - **`max-height: 100%` (or `100vh`/`100dvh`) on a `position: fixed` drawer
   resolves differently between a regular browser tab and an installed PWA's
   standalone display-mode** (no browser chrome changes what "the viewport"
